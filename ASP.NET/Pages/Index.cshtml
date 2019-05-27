@@ -1,0 +1,18 @@
+@page
+@model ASP.NET.Pages.IndexModel
+
+@foreach (var product in Model.Products)
+{
+    <article>
+        <h3>@product.Title</h3>
+        <hr/>
+        <img src="@product.ImageUrl" alt=""/>
+        <div class="oprettet">
+            <p>@product.Created.ToLongDateString()</p>
+        </div>
+        <p>@product.ShortDescription</p>
+        <div class="price">
+            <p>Pris: @product.Price.ToString("0.00") kr.</p>
+        </div>
+    </article>
+}

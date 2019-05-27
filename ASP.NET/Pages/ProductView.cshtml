@@ -1,0 +1,24 @@
+@page "{id:int}"
+@model ASP.NET.Pages.ProductViewModel
+
+<div>
+    @if (Model.Product != null)
+    {
+        <h2>@Model.Product.Title</h2>
+        <hr/>
+        <img src="@Model.Product.ImageUrl" alt=""/>
+        <p>@Model.Product.ShortDescription</p>
+        <div class="oprettet">
+            <p>@Model.Product.Created.ToLongDateString()</p>
+        </div>
+        <div class="price">
+            <p>Pris: @Model.Product.Price kr.</p>
+        </div>
+        <p>@Model.Product.LongDescription</p>
+    }
+    else
+    {
+        <h2>Produktet findes ikke</h2>
+        <p>Produktet med det indtastede id kunne ikke findes.</p>
+    }
+</div>

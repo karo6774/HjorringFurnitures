@@ -1,0 +1,50 @@
+@page
+@using ASP.NET.Pages
+@using Microsoft.AspNetCore.Http
+
+@model AddProductsModel
+
+<div>
+    @if (HttpMethods.IsPost(Request.Method))
+    {
+        if (Model.PostSuccess)
+        {
+            <p>Produktet blev tilføjet!</p>
+        }
+        else
+        {
+            <p>Et produkt med det indtastede id eksisterer allerede.</p>
+        }
+    }
+
+    <h2>Tilføj produkt</h2>
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <label>
+            Id <br/><input type="number" name="id" required="required"/>
+        </label>
+        <br/>
+        <label>
+            Billede <br/><input type="text" name="image" required="required"/>
+        </label>
+        <br/>
+        <label>
+            Overskrift <br/><input type="text" name="title" required="required" maxlength="20"/>
+        </label>
+        <br/>
+        <label>
+            Kort beskrivelse <br/><input type="text" name="short_desc" required="required" maxlength="50"/>
+        </label>
+        <br/>
+        <label>
+            Lang beskrivelse <br/><textarea name="long_desc" required="required"></textarea>
+        </label>
+        <br/>
+        <label>
+            Pris <br/><input type="number" name="price" step="0.01" lang="en" required="required"/>
+        </label>
+        <br/>
+        <input type="submit" value="Tilføj"/>
+    </form>
+</div>
